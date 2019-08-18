@@ -1,0 +1,30 @@
+body {
+    background: grey;
+}
+
+#content {
+    height: auto;
+    margin: 0 auto;
+    background-color:white;
+    border-radius: 25px;
+}
+
+#div1 {
+    height: auto;
+    background-color: black;
+    border-radius: 25px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    color: white;
+}
+
+#mainContent {
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+p {
+    text-align: center;
+    padding: 10px;
+    font-size: 3em;
+}
