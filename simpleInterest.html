@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple Calculate Interest</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <main id="content">
+            <div id="div1">
+                <p>Simple Calculate Interest</p>
+            </div>
+            <div id="mainContent">
+                    <form onsubmit="calcInterest()">
+                        <br>Balance:<br>
+                        <input type="text" id="balance" value="1000"><br><br>
+                        APY:<br>
+                        <input type="text" id="apy" value="0.04"><br><br>
+                        Months:<br>
+                        <input type="text" id="months" value="12"><br><br>
+                        <br><button type="button" onclick="calculateInterest()">Submit</button>
+
+                        <script>
+                                function calculateInterest() {
+                                    var balance = Number(document.getElementById("balance").value);
+                                    var apy = Number(document.getElementById("apy"). value);
+                                    var months = Number(document.getElementById("months").value);
+
+                                    var apyPerMonth = apy / 12;
+                                    var interest = apyPerMonth * balance * months;
+                                    var newBalance = balance + interest;
+                    
+                                    alert("Interest: " + interest + " Balance: " + newBalance);
+                                }
+                            </script>
+                    </form>
+            </div>
+        <main>
+    </body>
+</html>

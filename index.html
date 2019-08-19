@@ -2,41 +2,52 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>Simple Calculate Interest</title>
+        <title>Home</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <main id="content">
-            <div id="div1">
-                <p>Simple Calculate Interest</p>
-            </div>
-            <div id="mainContent">
-                    <form onsubmit="calcInterest()">
-                        <br>Balance:<br>
-                        <input type="text" id="balance" value="1000"><br><br>
-                        APY:<br>
-                        <input type="text" id="apy" value="0.04"><br><br>
-                        Months:<br>
-                        <input type="text" id="months" value="12"><br><br>
-                        <br><button type="button" onclick="calculateInterest()">Submit</button>
+        <nav>
+            <a class="active" href="#home">Home</a>
+            <a href="#news">Apps</a>
+            <a href="#contact">Podcast</a>
+            <a href="#about">Music</a>
+            <a href="#about">Blog</a>
+            <a href="#about">Resume</a>
+            <a href="#about">Contact</a>
+        </nav>
 
-                        <script>
-                                function calculateInterest() {
-                                    var balance = Number(document.getElementById("balance").value);
-                                    var apy = Number(document.getElementById("apy"). value);
-                                    var months = Number(document.getElementById("months").value);
+        <div id="title"> 
+            <h1 id="h1Title">Nathan Pepin</h1>
+        </div>
 
-                                    var apyPerMonth = apy / 12;
-                                    var interest = apyPerMonth * balance * months;
-                                    var newBalance = balance + interest;
-                    
-                                    alert("Interest: " + interest + " Balance: " + newBalance);
-                                }
-                            </script>
-                    </form>
-            </div>
         <main>
+            <div style="width: 70%;display:inline-block;">
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolor nesciunt aliquid unde. Ducimus atque delectus, dicta sequi qui facere dolorum tempore sit quo ratione labore et maxime, fuga rem.</p>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolor nesciunt aliquid unde. Ducimus atque delectus, dicta sequi qui facere dolorum tempore sit quo ratione labore et maxime, fuga rem.</p>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolor nesciunt aliquid unde. Ducimus atque delectus, dicta sequi qui facere dolorum tempore sit quo ratione labore et maxime, fuga rem.</p>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolor nesciunt aliquid unde. Ducimus atque delectus, dicta sequi qui facere dolorum tempore sit quo ratione labore et maxime, fuga rem.</p>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolor nesciunt aliquid unde. Ducimus atque delectus, dicta sequi qui facere dolorum tempore sit quo ratione labore et maxime, fuga rem.</p>
+            </div>
+            
+            <div style="width: 30%;float: right;display:inline-block;">
+                <h2>About Me</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci obcaecati dolorum, fugiat voluptates sequi possimus maiores dignissimos exercitationem est eos aspernatur quae maxime atque consequuntur pariatur rem iure, necessitatibus et?</p>
+            </div>
+
+        </main>
+
+        <footer>
+            <div id="foot_bar"></div>
+            <p id="footerText">Produced by Nathan Pepin</p>
+            <p id="footerText">For questions or concerns please contact:</p>
+            <p id="footerText">contact.nathan.pepin@gmail.com</p>
+        </footer>
     </body>
 </html>
