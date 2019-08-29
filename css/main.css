@@ -58,6 +58,13 @@ header {
   grid-column-end: 4;
 }
 
+@media (max-width: 500px) {
+  nav,
+  header {
+    font-size: 0;
+  }
+}
+
 main {
   background: white;
   color: rgba(0, 0, 0, 0.767);
@@ -73,6 +80,13 @@ main {
   display: flex;
 }
 
+@media (max-width: 700px) {
+  main {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 main h1 {
   text-align: center;
   font-size: 72px;
@@ -85,7 +99,6 @@ main .subtext {
 }
 
 main article {
-  background: white;
   padding: 0 16px 16px 24px;
 }
 
@@ -102,11 +115,18 @@ main article .point {
 }
 
 main aside {
-  background: white;
   position: relative;
   margin: 0 auto 0 auto;
+  padding-bottom: 24px;
   text-align: center;
-  max-width: 250px;
+  background: #a1d7ec;
+}
+
+@media (min-width: 700px) {
+  main aside {
+    width: auto;
+    background: white;
+  }
 }
 
 main aside p {
@@ -123,20 +143,25 @@ main aside .verticle_line {
 
 main aside .seperator {
   background: #3535351f;
-  margin: 0 auto 0 auto;
+  margin: 32px auto 0 auto;
   height: 32px;
   width: 80%;
   padding-top: 8px;
 }
 
 main aside .icons {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding-top: 16px;
   padding-left: 24px;
+  padding-right: 24px;
   row-gap: 16px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 main aside .icons img {
@@ -150,5 +175,9 @@ footer {
   -ms-grid-column: 1;
       grid-column-start: 1;
   grid-column-end: 4;
+}
+
+footer a {
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */

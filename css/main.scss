@@ -26,6 +26,7 @@ body {
 
   display: grid;
   width: 100%;
+
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -68,6 +69,13 @@ header {
   grid-column-end: 4;
 }
 
+nav,
+header {
+  @media (max-width: 500px) {
+    font-size: 0;
+  }
+}
+
 main {
   background: white;
 
@@ -83,6 +91,9 @@ main {
   min-height: 1000px;
 
   display: flex;
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+  }
 
   h1 {
     text-align: center;
@@ -96,8 +107,6 @@ main {
   }
 
   article {
-    background: white;
-
     #photo_div {
       text-align: center;
     }
@@ -114,12 +123,17 @@ main {
   }
 
   aside {
-    background: white;
     position: relative;
     margin: 0 auto 0 auto;
+    padding-bottom: 24px;
     text-align: center;
 
-    max-width: 250px;
+    background: rgb(161, 215, 236);
+
+    @media (min-width: 700px) {
+      width: auto;
+      background: white;
+    }
 
     p {
       padding-right: 24px;
@@ -135,19 +149,20 @@ main {
 
     .seperator {
       background: #3535351f;
-      margin: 0 auto 0 auto;
+      margin: 32px auto 0 auto;
       height: 32px;
       width: 80%;
       padding-top: 8px;
     }
 
     .icons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
       padding-top: 16px;
       padding-left: 24px;
-
+      padding-right: 24px;
       row-gap: 16px;
+      justify-content: space-between;
       img {
         height: 50px;
       }
@@ -162,4 +177,8 @@ footer {
 
   grid-column-start: 1;
   grid-column-end: 4;
+
+  a {
+    color: white;
+  }
 }
