@@ -1,71 +1,154 @@
 body {
-  background: #4d4d4d;
-  height: 100%;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#444343+0,333232+100 */
+  background: #444343;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, from(#444343), to(#333232));
+  background: linear-gradient(to bottom, #444343 0%, #333232 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444343', endColorstr='#333232',GradientType=0 );
+  /* IE6-9 */
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -ms-grid;
+  display: grid;
   width: 100%;
-  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
 }
 
 nav {
-  padding-top: 10px;
-  background: #4d4d4d;
-  text-align: center;
+  text-align-last: center;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
+  margin: 0 auto 0 auto;
 }
 
-a.nav_bar {
+nav div {
   color: white;
-  margin-left: 15px;
-  margin-right: 15px;
+  float: left;
+  padding: 8px 8px 8px 8px;
 }
 
-#h1Title {
-  text-align: center;
+nav div a {
   color: white;
-  font-size: 5rem;
-  padding-top: 1.5rem;
-  margin-top: 20px;
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
 }
 
-#title {
-  background: #373737;
-  height: 8rem;
+nav div a:hover {
+  background: #565656;
 }
 
-h2 {
-  padding-top: 1em;
-  padding-left: 2em;
-}
-
-#paragraphMain {
-  padding-left: 2em;
-}
-
-p.about_me {
-  padding-left: 30px;
-  padding-right: 30px;
+header {
+  background: #2b2b2b;
+  color: white;
+  text-align-last: center;
+  font-size: 80px;
+  padding: 16px 0 16px 0;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 main {
   background: white;
-  width: 1050px;
-  min-width: 400px;
-  min-height: 800px;
-  margin: 0 auto;
+  color: rgba(0, 0, 0, 0.767);
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 3;
+  margin: 0 auto 0 auto;
+  width: auto;
+  max-width: 1000px;
+  min-height: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main h1 {
+  text-align: center;
+  font-size: 72px;
+  margin: 24px 0 0 0;
+}
+
+main .subtext {
+  font-size: 28px;
+  margin: 0 0 24px 0;
+}
+
+main article {
+  background: white;
+  padding: 0 16px 16px 24px;
+}
+
+main article #photo_div {
+  text-align: center;
+}
+
+main article .app_photo {
+  width: 15%;
+}
+
+main article .point {
+  padding-left: 24px;
+}
+
+main aside {
+  background: white;
   position: relative;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  max-width: 250px;
+}
+
+main aside p {
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+main aside .verticle_line {
+  position: absolute;
+  background: #3535351f;
+  height: 100%;
+  width: 3px;
+}
+
+main aside .seperator {
+  background: #3535351f;
+  margin: 0 auto 0 auto;
+  height: 32px;
+  width: 80%;
+  padding-top: 8px;
+}
+
+main aside .icons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  padding-top: 16px;
+  padding-left: 24px;
+  row-gap: 16px;
+}
+
+main aside .icons img {
+  height: 50px;
 }
 
 footer {
-  margin-top: auto;
-  width: 100%;
-  background: #373737;
-  height: auto;
-}
-#footerText {
+  background: black;
   color: white;
   text-align: center;
-  font-size: 0.75em;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
 }
-
-#foot_bar {
-  height: 20px;
-  background: rgb(100, 100, 100);
-}
+/*# sourceMappingURL=main.css.map */
