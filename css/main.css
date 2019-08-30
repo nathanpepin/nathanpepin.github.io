@@ -27,7 +27,7 @@ nav {
   text-align-last: center;
   -ms-grid-column: 1;
       grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
   margin: 0 auto 0 auto;
 }
 
@@ -55,7 +55,7 @@ header {
   padding: 16px 0 16px 0;
   -ms-grid-column: 1;
       grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
 }
 
 @media (max-width: 500px) {
@@ -68,9 +68,9 @@ header {
 main {
   background: white;
   color: rgba(0, 0, 0, 0.767);
-  -ms-grid-column: 2;
-      grid-column-start: 2;
-  grid-column-end: 3;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
   margin: 0 auto 0 auto;
   width: auto;
   max-width: 1000px;
@@ -120,14 +120,14 @@ main aside {
   position: relative;
   margin: 0 auto 0 auto;
   text-align: center;
-  background: #dddddd;
-  width: 100%;
+  background: white;
+  width: 200px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   main aside {
-    background: #ffffff;
-    width: 200px;
+    background: lightgray;
+    width: 100%;
   }
 }
 
@@ -144,7 +144,7 @@ main aside .verticle_line {
 }
 
 main aside .seperator {
-  background: #35353504;
+  background: #3535351c;
   margin: 0 auto 0 auto;
   height: 32px;
   width: 100%;
@@ -167,6 +167,7 @@ main aside .icons {
 
 main aside .icons img {
   height: 50px;
+  padding: 0 8px 0 8px;
 }
 
 footer {
@@ -175,7 +176,7 @@ footer {
   text-align: center;
   -ms-grid-column: 1;
       grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
 }
 
 footer a {
