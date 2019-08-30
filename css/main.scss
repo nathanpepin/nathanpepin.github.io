@@ -126,14 +126,16 @@ main {
   aside {
     position: relative;
     margin: 0 auto 0 auto;
-    padding-bottom: 24px;
     text-align: center;
 
-    background: rgb(161, 215, 236);
+    //When the screen is too small
+    background: #dddddd;
+    width: 100%;
 
-    @media (min-width: 700px) {
-      width: auto;
-      background: white;
+    //When the screen is a good size
+    @media (max-width: 700px) {
+      background: #ffffff;
+      width: 200px;
     }
 
     p {
@@ -149,20 +151,19 @@ main {
     }
 
     .seperator {
-      background: #3535351f;
-      margin: 32px auto 0 auto;
+      background: #35353504;
+      margin: 0 auto 0 auto;
       height: 32px;
-      width: 80%;
+      width: 100%;
       padding-top: 8px;
     }
 
     .icons {
       display: flex;
       flex-wrap: wrap;
-      padding-top: 16px;
-      padding-left: 24px;
-      padding-right: 24px;
+      padding: 16px 24px 16px 24px;
       row-gap: 16px;
+      background: #d1d1d1;
       justify-content: space-between;
       img {
         height: 50px;
