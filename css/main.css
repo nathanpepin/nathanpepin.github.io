@@ -21,6 +21,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 nav {
@@ -73,7 +76,7 @@ main {
   grid-column-end: 4;
   margin: 0 auto 0 auto;
   width: auto;
-  max-width: 1000px;
+  max-width: 1200px;
   min-height: 1000px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -101,7 +104,46 @@ main .subtext {
 }
 
 main article {
+  min-width: 650px;
   padding: 0 16px 16px 24px;
+}
+
+main article .card_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main article .card_portfolio {
+  color: black;
+  width: 200px;
+  background: #2b2b2b4b;
+  padding: 16px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 16px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main article .card_portfolio h2 {
+  background: #2b2b2b;
+  color: white;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+main article .card_portfolio a {
+  color: black;
+  text-decoration: none;
+}
+
+main article .app_page_icon img {
+  height: 200px;
 }
 
 main article #photo_div {
