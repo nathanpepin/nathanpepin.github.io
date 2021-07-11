@@ -2,24 +2,23 @@
 <html>
 
 <body>
-
     <div class="card" style="width: 18rem;">
         <div class="card-header" style="background: #C00624; color:white;">
-            Cost Estimator
+            <strong>Roofing Cost Estimator</strong>
         </div>
         <div class="card-body">
             <form>
                 <div class="mb-3">
                     <label for="roof_length" class="form-label">Roof Length (ft)</label>
-                    <input name="roof_length" id="roof_length" class="form-control" min="0" onchange="calculate()" type="number">
+                    <input name="roof_length" id="roof_length" class="form-control" min="0" onkeypress="validate()" onchange="calculate()" type="number" value="100">
                 </div>
                 <div class="mb-3">
                     <label for="roof_width" class="form-label">Roof Width (ft)</label>
-                    <input name="roof_width" id="roof_width" class="form-control" min="0" onchange="calculate()" type="number">
+                    <input name="roof_width" id="roof_width" class="form-control" min="0" onkeypress="validate()" onchange="calculate()" type="number" value="100">
                 </div>
                 <div class="mb-3">
                     <label for="roof_slope" class="form-label">Roof Slope</label>
-                    <select name="roof_slope" id="roof_slope" class="form-select" aria-label=".form-select" onchange="calculate()">
+                    <select name="roof_slope" id="roof_slope" class="form-select" onchange="calculate()" value="roof_slope_0_12">
                     <option value="roof_slope_0_12">0/12 (Flat)</option>
                     <option value="roof_slope_1_12">1/12 (Very Shallow)</option>
                     <option value="roof_slope_2_12">2/12 (Very Shallow)</option>
@@ -39,7 +38,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="tear_off" class="form-label">Tear Off</label>
-                    <select name="tear_off" id="tear_off" class="form-select" aria-label=".form-select-sm example " onchange="calculate()">
+                    <select name="tear_off" id="tear_off" class="form-select" onchange="calculate()" value="tear_off_1_layer">
                     <option value="tear_off_1_layer">1 Layer</option>
                     <option value="tear_off_2_layer">2 Layers</option>
                     <option value="tear_off_none">No Tear-Off</option>
@@ -48,7 +47,7 @@
 
                 <div class="mb-3">
                     <label for="roofing_material" class="form-label">Roofing Material</label>
-                    <select name="roofing_material" id="roofing_material" class="form-select" aria-label=".form-select-sm example " onchange="calculate()">
+                    <select name="roofing_material" id="roofing_material" class="form-select" onchange="calculate()" value="roofing_material_standard">
                     <option value="roofing_material_standard">Standard Lifetime Shingles</option>
                     <option value="roofing_material_premium">Premium Shingles</option>
                     <option value="roofing_material_epdm">EPDM Rubber</option>
@@ -57,21 +56,17 @@
 
                 <div class="mb-3">
                     <label for="stories" class="form-label">Number of Stories</label>
-                    <select name="stories" id="stories" class="form-select" aria-label=".form-select-sm example " onchange="calculate()">
-                    <option value="stories_1">1</option>
-                    <option value="stories_2">2</option>
-                    <option value="stories_3">3</option>
-                </select>
+                    <input name="stories" id="stories" class="form-control" onkeypress="validate()" onchange="calculate()" min="1" max="3" type="number" value="1">
                 </div>
 
                 <div class="mb-3">
                     <label for="skylight" class="form-label">Number of Skylights</label>
-                    <input name="skylight" id="skylight" class="form-control" onchange="calculate()" min="0" max="10" type="number">
+                    <input name="skylight" id="skylight" class="form-control" onkeypress="validate()" onchange="calculate()" min="0" max="10" type="number" value="0">
                 </div>
 
                 <div class="mb-3">
                     <label for="chimney" class="form-label">Number of Chimneys</label>
-                    <input name="chimney" id="chimney" class="form-control" onchange="calculate()" min="0" max="10" type="number">
+                    <input name="chimney" id="chimney" class="form-control" onkeypress="validate()" onchange="calculate()" min="0" max="10" type="number" value="0">
                 </div>
             </form>
         </div>
@@ -87,7 +82,7 @@
                 <td name="cost_high" id="cost_high">---</td>
             </tr>
         </table>
-        <p1 style="text-align: center"><em>Call us at 603-555-5555</em></p1>
+        <p1 style="text-align: center"><em>Questions?<br>Special needs?<br><strong>Call us at (603) 838-7663</strong></em></p1>
         <br>
         <table class="table table-striped">
             <tr style="background: #C00624; color:white">
@@ -99,7 +94,7 @@
             <tr>
                 <td>Square</td>
                 <td id="square_low"></td>
-                <td id="square_med"></td>
+                <td id="square_mid"></td>
                 <td id="square_high"></td>
             </tr>
             <tr>
@@ -164,6 +159,9 @@
         let getMaterials = () => document.getElementById("roofing_material").value
         let getSkylight = () => document.getElementById("skylight").value
         let getChimneys = () => document.getElementById("chimney").value
+        let getCostLow = () => document.getElementById("cost_low").innerHTML
+        let getCostMid = () => document.getElementById("cost_mid").innerHTML
+        let getCostHigh = () => document.getElementById("cost_high").innerHTML
 
         let setRoofLength = (input) => document.getElementById("roof_length").value = input
         let setRoofWidth = (input) => document.getElementById("roof_width").value = input
@@ -173,16 +171,22 @@
         let setMaterials = (input) => document.getElementById("roofing_material").value = input
         let setSkylight = (input) => document.getElementById("skylight").value = input
         let setChimneys = (input) => document.getElementById("chimney").value = input
+        let setCostLow = (input) => document.getElementById("cost_low").innerHTML = input
+        let setCostMid = (input) => document.getElementById("cost_mid").innerHTML = input
+        let setCostHigh = (input) => document.getElementById("cost_high").innerHTML = input
 
         function validateNumbers() {
             let max = 10
-            if (getRoofLength() < 0) setRoofLength(0)
-            if (getRoofWidth() < 0) setRoofWidth(0)
-            if (getSkylight() < 0) setSkylight(0)
-            if (getChimneys() < 0) setChimneys(0)
+
+            if (getRoofLength() < 0 || isNaN(getRoofLength())) setRoofLength(0)
+            if (getRoofWidth() < 0 || isNaN(getRoofWidth())) setRoofWidth(0)
+            if (getSkylight() < 0 || isNaN(getSkylight())) setSkylight(0)
+            if (getChimneys() < 0 || isNaN(getChimneys())) setChimneys(0)
+            if (getStories() < 1 || isNaN(getStories())) setStories(1)
 
             if (getSkylight() > max) setSkylight(max)
             if (getChimneys() > max) setChimneys(max)
+            if (getStories() > max) setStories(3)
         }
 
         /////////////////
@@ -270,33 +274,33 @@
                 case costEstimations.LOW:
                     {
                         switch (getStories()) {
-                            case "stories_1":
+                            case "1":
                                 return 0;
-                            case "stories_2":
+                            case "2":
                                 return 24;
-                            case "stories_3":
+                            case "3":
                                 return 48;
                         }
                     }
                 case costEstimations.MID:
                     {
                         switch (getStories()) {
-                            case "stories_1":
+                            case "1":
                                 return 0;
-                            case "stories_2":
+                            case "2":
                                 return 30;
-                            case "stories_3":
+                            case "3":
                                 return 60;
                         }
                     }
                 case costEstimations.HIGH:
                     {
                         switch (getStories()) {
-                            case "stories_1":
+                            case "1":
                                 return 0;
-                            case "stories_2":
+                            case "2":
                                 return 36;
-                            case "stories_3":
+                            case "3":
                                 return 72;
                         }
                     }
@@ -391,6 +395,24 @@
             calculateHigh()
         }
 
+        function validate(evt) {
+            var theEvent = evt || window.event;
+
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
@@ -422,12 +444,13 @@
             document.getElementById("skighlight_low").innerHTML = getSkylightCost(costType)
             document.getElementById("chimney_low").innerHTML = getChimneyCost(costType)
             document.getElementById("roofing_material_low").innerHTML = getRoofingMaterialCost(costType)
-            document.getElementById("cost_low").innerHTML = getTotalCost(costType)
+
+            setCostLow(getTotalCost(costType))
         }
 
         function calculateMid() {
             let costType = costEstimations.MID
-            document.getElementById("square_med").innerHTML = getSquare();
+            document.getElementById("square_mid").innerHTML = getSquare();
             document.getElementById("square_cost_mid").innerHTML = getSquareCost(costType)
             document.getElementById("roof_slope_mid").innerHTML = getRoofSlopeCost(costType)
             document.getElementById("tear_off_mid").innerHTML = getTearOffCost(costType)
@@ -435,7 +458,8 @@
             document.getElementById("skighlight_mid").innerHTML = getSkylightCost(costType)
             document.getElementById("chimney_mid").innerHTML = getChimneyCost(costType)
             document.getElementById("roofing_material_mid").innerHTML = getRoofingMaterialCost(costType)
-            document.getElementById("cost_mid").innerHTML = getTotalCost(costType)
+
+            setCostMid(getTotalCost(costType))
         }
 
         function calculateHigh() {
@@ -448,21 +472,11 @@
             document.getElementById("skighlight_high").innerHTML = getSkylightCost(costType)
             document.getElementById("chimney_high").innerHTML = getChimneyCost(costType)
             document.getElementById("roofing_material_high").innerHTML = getRoofingMaterialCost(costType)
-            document.getElementById("cost_high").innerHTML = getTotalCost(costType)
+
+            setCostHigh(getTotalCost(costType))
         }
 
-        function logValues() {
-            console.log("Roof length: " + getRoofLength())
-            console.log("Roof width: " + getRoofWidth())
-            console.log("Roof slope: " + getRoofSlope())
-            console.log("Tear off: " + getTearOff())
-            console.log("Stories: " + getStories())
-            console.log("Roofing materials: " + getMaterials())
-            console.log("Stories: " + getStories())
-            console.log("Skylights: " + getSkylight())
-            console.log("Chimneys : " + getChimneys())
-            console.log(" ")
-        }
+        calculate()
     </script>
 </body>
 
