@@ -2,133 +2,151 @@
 <html>
 
 <body>
-    <h1>Roofing Calculator</h1>
-    <label>Roof Length</label><input name="roof_length" id="roof_length" onchange="calculate()" type="number">ft<br>
 
-    <label>Roof Width</label><input name="roof_width" id="roof_width" onchange="calculate()" type="number">ft<br>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header" style="background: #C00624; color:white;">
+            Cost Estimator
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="roof_length" class="form-label">Roof Length (ft)</label>
+                    <input name="roof_length" id="roof_length" class="form-control" min="0" onchange="calculate()" type="number">
+                </div>
+                <div class="mb-3">
+                    <label for="roof_width" class="form-label">Roof Width (ft)</label>
+                    <input name="roof_width" id="roof_width" class="form-control" min="0" onchange="calculate()" type="number">
+                </div>
+                <div class="mb-3">
+                    <label for="roof_slope" class="form-label">Roof Slope</label>
+                    <select name="roof_slope" id="roof_slope" class="form-select" aria-label=".form-select" onchange="calculate()">
+                    <option value="roof_slope_0_12">0/12 (Flat)</option>
+                    <option value="roof_slope_1_12">1/12 (Very Shallow)</option>
+                    <option value="roof_slope_2_12">2/12 (Very Shallow)</option>
+                    <option value="roof_slope_3_12">3/12 (Low Slope)</option>
+                    <option value="roof_slope_4_12">4/12 (Low Slope)</option>
+                    <option value="roof_slope_5_12">5/12 (Low-Medium)</option>
+                    <option value="roof_slope_6_12">6/12 (Medium)</option>
+                    <option value="roof_slope_7_12">7/12 (Medium)</option>
+                    <option value="roof_slope_8_12">8/12 (Fairly Steep)</option>
+                    <option value="roof_slope_9_12">9/12 (Fairly Steep)</option>
+                    <option value="roof_slope_10_12">10/12 (Fairly Steep)</option>
+                    <option value="roof_slope_11_12">11/12 (Steep)</option>
+                    <option value="roof_slope_12_12">12/12 (Steep)</option>
+                    <option value="roof_slope_18_12">18/12 (Very Steep)</option>
+                    <option value="roof_slope_24_12">24/12 (Very Steep)</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                    <label for="tear_off" class="form-label">Tear Off</label>
+                    <select name="tear_off" id="tear_off" class="form-select" aria-label=".form-select-sm example " onchange="calculate()">
+                    <option value="tear_off_1_layer">1 Layer</option>
+                    <option value="tear_off_2_layer">2 Layers</option>
+                    <option value="tear_off_none">No Tear-Off</option>
+                </select>
+                </div>
 
-    <label>Roof Slope</label>
-    <select name="roof_slope" id="roof_slope" onchange="calculate()">
-        <option value="roof_slope_0_12">0/12 (Flat)</option>
-        <option value="roof_slope_1_12">1/12 (Very Shallow)</option>
-        <option value="roof_slope_2_12">2/12 (Very Shallow)</option>
-        <option value="roof_slope_3_12">3/12 (Low Slope)</option>
-        <option value="roof_slope_4_12">4/12 (Low Slope)</option>
-        <option value="roof_slope_5_12">5/12 (Low-Medium)</option>
-        <option value="roof_slope_6_12">6/12 (Medium)</option>
-        <option value="roof_slope_7_12">7/12 (Medium)</option>
-        <option value="roof_slope_8_12">8/12 (Fairly Steep)</option>
-        <option value="roof_slope_9_12">9/12 (Fairly Steep)</option>
-        <option value="roof_slope_10_12">10/12 (Fairly Steep)</option>
-        <option value="roof_slope_11_12">11/12 (Steep)</option>
-        <option value="roof_slope_12_12">12/12 (Steep)</option>
-        <option value="roof_slope_18_12">18/12 (Very Steep)</option>
-        <option value="roof_slope_24_12">24/12 (Very Steep)</option>
-      </select>
-    <br>
+                <div class="mb-3">
+                    <label for="roofing_material" class="form-label">Roofing Material</label>
+                    <select name="roofing_material" id="roofing_material" class="form-select" aria-label=".form-select-sm example " onchange="calculate()">
+                    <option value="roofing_material_standard">Standard Lifetime Shingles</option>
+                    <option value="roofing_material_premium">Premium Shingles</option>
+                    <option value="roofing_material_epdm">EPDM Rubber</option>
+                </select>
+                </div>
 
-    <label>Tear-off/Disposal</label>
-    <select name="tear_off" id="tear_off" onchange="calculate()">
-        <option value="tear_off_1_layer">1 Layer</option>
-        <option value="tear_off_2_layer">2 Layers</option>
-        <option value="tear_off_none">No Tear-Off</option>
-      </select>
-    <br>
+                <div class="mb-3">
+                    <label for="stories" class="form-label">Number of Stories</label>
+                    <select name="stories" id="stories" class="form-select" aria-label=".form-select-sm example " onchange="calculate()">
+                    <option value="stories_1">1</option>
+                    <option value="stories_2">2</option>
+                    <option value="stories_3">3</option>
+                </select>
+                </div>
 
-    <label>Number of Stories</label>
-    <select name="stories" id="stories" onchange="calculate()">
-        <option value="stories_1">1</option>
-        <option value="stories_2">2</option>
-        <option value="stories_3">3</option>
-      </select>
-    <br>
+                <div class="mb-3">
+                    <label for="skylight" class="form-label">Number of Skylights</label>
+                    <input name="skylight" id="skylight" class="form-control" onchange="calculate()" min="0" max="10" type="number">
+                </div>
 
-    <label>Roofing Materials</label>
-    <select name="roofing_material" id="roofing_material" onchange="calculate()">
-        <option value="roofing_material_standard">Standard Lifetime Shingles</option>
-        <option value="roofing_material_premium">Premium Shingles</option>
-        <option value="roofing_material_epdm">EPDM Rubber</option>
-      </select>
-    <br>
-
-    <label>Skylight quantity</label><input name="skylight" id="skylight" onchange="calculate()" type="number"><br>
-
-    <label>Chimneys quantity</label><input name="chimney" id="chimney" onchange="calculate()" type="number">
-
-    <H1>Cost Estimation</H1>
-
-    <table>
-        <tr>
-            <th>Type</th>
-            <th>Low</th>
-            <th>Mid</th>
-            <th>High</th>
-        </tr>
-        <tr>
-            <td>Square</td>
-            <td id="square_low"></td>
-            <td id="square_med"></td>
-            <td id="square_high"></td>
-        </tr>
-        <tr>
-            <td>Square cost</td>
-            <td id="square_cost_low"></td>
-            <td id="square_cost_mid"></td>
-            <td id="square_cost_high"></td>
-        </tr>
-        <tr>
-            <td>Roof slope</td>
-            <td id="roof_slope_low"></td>
-            <td id="roof_slope_mid"></td>
-            <td id="roof_slope_high"></td>
-        </tr>
-        <tr>
-            <td>Tear-off/Disposal</td>
-            <td id="tear_off_low"></td>
-            <td id="tear_off_mid"></td>
-            <td id="tear_off_high"></td>
-        </tr>
-        <tr>
-            <td>Number of Stories</td>
-            <td id="stories_low"></td>
-            <td id="stories_mid"></td>
-            <td id="stories_high"></td>
-        </tr>
-        <tr>
-            <td>Skylights</td>
-            <td id="skighlight_low"></td>
-            <td id="skighlight_mid"></td>
-            <td id="skighlight_high"></td>
-        </tr>
-        <tr>
-            <td>Chimneys</td>
-            <td id="chimney_low"></td>
-            <td id="chimney_mid"></td>
-            <td id="chimney_high"></td>
-        </tr>
-        <tr>
-            <td>Roofing Materials</td>
-            <td id="roofing_material_low"></td>
-            <td id="roofing_material_mid"></td>
-            <td id="roofing_material_high"></td>
-        </tr>
-
-    </table>
-
-    <table>
-        <tr>
-            <th>Low</th>
-            <th>Mid</th>
-            <th>High</th>
-        </tr>
-        <tr>
-            <td name="cost_low" id="cost_low"></td>
-            <td name="cost_mid" id="cost_mid"></td>
-            <td name="cost_high" id="cost_high"></td>
-        </tr>
-    </table>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+                <div class="mb-3">
+                    <label for="chimney" class="form-label">Number of Chimneys</label>
+                    <input name="chimney" id="chimney" class="form-control" onchange="calculate()" min="0" max="10" type="number">
+                </div>
+            </form>
+        </div>
+        <table class="table table-striped">
+            <tr style="background: #C00624; color:white">
+                <th>Low</th>
+                <th>Mid</th>
+                <th>High</th>
+            </tr>
+            <tr>
+                <td name="cost_low" id="cost_low">---</td>
+                <td name="cost_mid" id="cost_mid">---</td>
+                <td name="cost_high" id="cost_high">---</td>
+            </tr>
+        </table>
+        <p1 style="text-align: center"><em>Call us at 603-555-5555</em></p1>
+        <br>
+        <table class="table table-striped">
+            <tr style="background: #C00624; color:white">
+                <th>Type</th>
+                <th>Low</th>
+                <th>Mid</th>
+                <th>High</th>
+            </tr>
+            <tr>
+                <td>Square</td>
+                <td id="square_low"></td>
+                <td id="square_med"></td>
+                <td id="square_high"></td>
+            </tr>
+            <tr>
+                <td>Square cost</td>
+                <td id="square_cost_low"></td>
+                <td id="square_cost_mid"></td>
+                <td id="square_cost_high"></td>
+            </tr>
+            <tr>
+                <td>Roof slope</td>
+                <td id="roof_slope_low"></td>
+                <td id="roof_slope_mid"></td>
+                <td id="roof_slope_high"></td>
+            </tr>
+            <tr>
+                <td>Tear-off/Disposal</td>
+                <td id="tear_off_low"></td>
+                <td id="tear_off_mid"></td>
+                <td id="tear_off_high"></td>
+            </tr>
+            <tr>
+                <td>Number of Stories</td>
+                <td id="stories_low"></td>
+                <td id="stories_mid"></td>
+                <td id="stories_high"></td>
+            </tr>
+            <tr>
+                <td>Skylights</td>
+                <td id="skighlight_low"></td>
+                <td id="skighlight_mid"></td>
+                <td id="skighlight_high"></td>
+            </tr>
+            <tr>
+                <td>Chimneys</td>
+                <td id="chimney_low"></td>
+                <td id="chimney_mid"></td>
+                <td id="chimney_high"></td>
+            </tr>
+            <tr>
+                <td>Roofing Materials</td>
+                <td id="roofing_material_low"></td>
+                <td id="roofing_material_mid"></td>
+                <td id="roofing_material_high"></td>
+            </tr>
+        </table>
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css " rel="stylesheet " integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC " crossorigin="anonymous ">
 
 
     <script>
@@ -146,6 +164,26 @@
         let getMaterials = () => document.getElementById("roofing_material").value
         let getSkylight = () => document.getElementById("skylight").value
         let getChimneys = () => document.getElementById("chimney").value
+
+        let setRoofLength = (input) => document.getElementById("roof_length").value = input
+        let setRoofWidth = (input) => document.getElementById("roof_width").value = input
+        let setRoofSlope = (input) => document.getElementById("roof_slope").value = input
+        let setTearOff = (input) => document.getElementById("tear_off").value = input
+        let setStories = (input) => document.getElementById("stories").value = input
+        let setMaterials = (input) => document.getElementById("roofing_material").value = input
+        let setSkylight = (input) => document.getElementById("skylight").value = input
+        let setChimneys = (input) => document.getElementById("chimney").value = input
+
+        function validateNumbers() {
+            let max = 10
+            if (getRoofLength() < 0) setRoofLength(0)
+            if (getRoofWidth() < 0) setRoofWidth(0)
+            if (getSkylight() < 0) setSkylight(0)
+            if (getChimneys() < 0) setChimneys(0)
+
+            if (getSkylight() > max) setSkylight(max)
+            if (getChimneys() > max) setChimneys(max)
+        }
 
         /////////////////
         //Square
@@ -347,15 +385,18 @@
         //Update UI
         /////////////////
         function calculate() {
-            logValues()
-
+            validateNumbers()
             calculateLow()
             calculateMid()
             calculateHigh()
         }
 
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         function getTotalCost(costType) {
-            var total = 0
+            let total = 0
             total += getSquareCost(costType)
             total += getRoofSlopeCost(costType)
             total += getTearOffCost(costType)
@@ -363,7 +404,12 @@
             total += getSkylightCost(costType)
             total += getChimneyCost(costType)
             total += getRoofingMaterialCost(costType)
-            return total
+
+            if (total == null || total <= 0) return "---"
+
+            let roundedTotal = Math.round(total)
+            let commaTotal = numberWithCommas(roundedTotal)
+            return "$" + commaTotal
         }
 
         function calculateLow() {
@@ -415,7 +461,7 @@
             console.log("Stories: " + getStories())
             console.log("Skylights: " + getSkylight())
             console.log("Chimneys : " + getChimneys())
-            console.log("")
+            console.log(" ")
         }
     </script>
 </body>
