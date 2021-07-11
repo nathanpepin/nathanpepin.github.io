@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Roofing Calculator</h1>
+    <label>Roof Length</label><input name="roof_length" id="roof_length" onchange="calculate()" type="number">ft<br>
+
+    <label>Roof Width</label><input name="roof_width" id="roof_width" onchange="calculate()" type="number">ft<br>
+
+    <label>Roof Slope</label>
+    <select name="roof_slope" id="roof_slope" onchange="calculate()">
+        <option value="roof_slope_0_12">0/12 (Flat)</option>
+        <option value="roof_slope_1_12">1/12 (Very Shallow)</option>
+        <option value="roof_slope_2_12">2/12 (Very Shallow)</option>
+        <option value="roof_slope_3_12">3/12 (Low Slope)</option>
+        <option value="roof_slope_4_12">4/12 (Low Slope)</option>
+        <option value="roof_slope_5_12">5/12 (Low-Medium)</option>
+        <option value="roof_slope_6_12">6/12 (Medium)</option>
+        <option value="roof_slope_7_12">7/12 (Medium)</option>
+        <option value="roof_slope_8_12">8/12 (Fairly Steep)</option>
+        <option value="roof_slope_9_12">9/12 (Fairly Steep)</option>
+        <option value="roof_slope_10_12">10/12 (Fairly Steep)</option>
+        <option value="roof_slope_11_12">11/12 (Steep)</option>
+        <option value="roof_slope_12_12">12/12 (Steep)</option>
+        <option value="roof_slope_18_12">18/12 (Very Steep)</option>
+        <option value="roof_slope_24_12">24/12 (Very Steep)</option>
+      </select>
+    <br>
+
+    <label>Tear-off/Disposal</label>
+    <select name="tear_off" id="tear_off" onchange="calculate()">
+        <option value="tear_off_1_layer">1 Layer</option>
+        <option value="tear_off_2_layer">2 Layers</option>
+        <option value="tear_off_none">No Tear-Off</option>
+      </select>
+    <br>
+
+    <label>Number of Stories</label>
+    <select name="stories" id="stories" onchange="calculate()">
+        <option value="stories_1">1</option>
+        <option value="stories_2">2</option>
+        <option value="stories_3">3</option>
+      </select>
+    <br>
+
+    <label>Roofing Materials</label>
+    <select name="roofing_material" id="roofing_material" onchange="calculate()">
+        <option value="roofing_material_standard">Standard Lifetime Shingles</option>
+        <option value="roofing_material_premium">Premium Shingles</option>
+        <option value="roofing_material_epdm">EPDM Rubber</option>
+      </select>
+    <br>
+
+    <label>Skylight quantity</label><input name="skylight" id="skylight" onchange="calculate()" type="number"><br>
+
+    <label>Chimneys quantity</label><input name="chimney" id="chimney" onchange="calculate()" type="number">
+
+    <H1>Cost Estimation</H1>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Low</th>
+            <th>Mid</th>
+            <th>High</th>
+        </tr>
+        <tr>
+            <td>Square</td>
+            <td id="square_low"></td>
+            <td id="square_med"></td>
+            <td id="square_high"></td>
+        </tr>
+        <tr>
+            <td>Square cost</td>
+            <td id="square_cost_low"></td>
+            <td id="square_cost_mid"></td>
+            <td id="square_cost_high"></td>
+        </tr>
+        <tr>
+            <td>Roof slope</td>
+            <td id="roof_slope_low"></td>
+            <td id="roof_slope_mid"></td>
+            <td id="roof_slope_high"></td>
+        </tr>
+        <tr>
+            <td>Tear-off/Disposal</td>
+            <td id="tear_off_low"></td>
+            <td id="tear_off_mid"></td>
+            <td id="tear_off_high"></td>
+        </tr>
+        <tr>
+            <td>Number of Stories</td>
+            <td id="stories_low"></td>
+            <td id="stories_mid"></td>
+            <td id="stories_high"></td>
+        </tr>
+        <tr>
+            <td>Skylights</td>
+            <td id="skighlight_low"></td>
+            <td id="skighlight_mid"></td>
+            <td id="skighlight_high"></td>
+        </tr>
+        <tr>
+            <td>Chimneys</td>
+            <td id="chimney_low"></td>
+            <td id="chimney_mid"></td>
+            <td id="chimney_high"></td>
+        </tr>
+        <tr>
+            <td>Roofing Materials</td>
+            <td id="roofing_material_low"></td>
+            <td id="roofing_material_mid"></td>
+            <td id="roofing_material_high"></td>
+        </tr>
+
+    </table>
+
+    <table>
+        <tr>
+            <th>Low</th>
+            <th>Mid</th>
+            <th>High</th>
+        </tr>
+        <tr>
+            <td name="cost_low" id="cost_low"></td>
+            <td name="cost_mid" id="cost_mid"></td>
+            <td name="cost_high" id="cost_high"></td>
+        </tr>
+    </table>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <script>
+        const costEstimations = {
+            LOW: "low",
+            MID: "mid",
+            HIGH: "high"
+        }
+
+        let getRoofLength = () => document.getElementById("roof_length").value
+        let getRoofWidth = () => document.getElementById("roof_width").value
+        let getRoofSlope = () => document.getElementById("roof_slope").value
+        let getTearOff = () => document.getElementById("tear_off").value
+        let getStories = () => document.getElementById("stories").value
+        let getMaterials = () => document.getElementById("roofing_material").value
+        let getSkylight = () => document.getElementById("skylight").value
+        let getChimneys = () => document.getElementById("chimney").value
+
+        /////////////////
+        //Square
+        /////////////////
+        let getSquare = () => (getRoofLength() * getRoofWidth()) / 100
+
+        /////////////////
+        //Square cost
+        /////////////////
+        function getSquareFactor(costType) {
+            switch (costType) {
+                case costEstimations.LOW:
+                    return 400;
+                case costEstimations.MID:
+                    return 500;
+                case costEstimations.HIGH:
+                    return 700;
+            }
+        }
+
+        let getSquareCost = (costType) => getSquare() * getSquareFactor(costType)
+
+        /////////////////
+        //Roof slope
+        /////////////////
+        function getRoofSlopeCostFactor() {
+            switch (getRoofSlope()) {
+                case "roof_slope_0_12":
+                    return 0
+                case "roof_slope_1_12":
+                    return 0.0035
+                case "roof_slope_2_12":
+                    return 0.0138
+                case "roof_slope_3_12":
+                    return 0.0308
+                case "roof_slope_4_12":
+                    return 0.0541
+                case "roof_slope_5_12":
+                    return 0.0833
+                case "roof_slope_6_12":
+                    return 0.118
+                case "roof_slope_7_12":
+                    return 0.1577
+                case "roof_slope_8_12":
+                    return 0.2019
+                case "roof_slope_9_12":
+                    return 0.25
+                case "roof_slope_10_12":
+                    return 0.3017
+                case "roof_slope_11_12":
+                    return 0.3566
+                case "roof_slope_12_12":
+                    return 0.4142
+                case "roof_slope_18_12":
+                    return 0.803
+                case "roof_slope_24_12":
+                    return 1.235
+            }
+        }
+
+        let getRoofSlopeCost = costType => getSquareCost(costType) * getRoofSlopeCostFactor()
+
+        /////////////////
+        //Tear-off/Disposal
+        /////////////////
+        function getTearOffFactor() {
+            switch (getTearOff()) {
+                case "tear_off_1_layer":
+                    return 0; //Is this right?
+                case "tear_off_2_layer":
+                    return .25;
+                case "tear_off_none":
+                    return 0;
+            }
+        }
+
+        let getTearOffCost = costType => getSquareCost(costType) * getTearOffFactor()
+
+        /////////////////
+        //Number of stories
+        /////////////////
+        function getStoryFactor(costType) {
+            switch (costType) {
+                case costEstimations.LOW:
+                    {
+                        switch (getStories()) {
+                            case "stories_1":
+                                return 0;
+                            case "stories_2":
+                                return 24;
+                            case "stories_3":
+                                return 48;
+                        }
+                    }
+                case costEstimations.MID:
+                    {
+                        switch (getStories()) {
+                            case "stories_1":
+                                return 0;
+                            case "stories_2":
+                                return 30;
+                            case "stories_3":
+                                return 60;
+                        }
+                    }
+                case costEstimations.HIGH:
+                    {
+                        switch (getStories()) {
+                            case "stories_1":
+                                return 0;
+                            case "stories_2":
+                                return 36;
+                            case "stories_3":
+                                return 72;
+                        }
+                    }
+            }
+        }
+
+        let getStoryCost = costType => getStoryFactor(costType) * getSquare()
+
+        /////////////////
+        //Skylights
+        /////////////////
+        function getSkylightFactor(costType) {
+            switch (costType) {
+                case costEstimations.LOW:
+                    return 1000
+                case costEstimations.MID:
+                    return 1500
+                case costEstimations.HIGH:
+                    return 2250
+            }
+        }
+
+        let getSkylightCost = costType => getSkylight() * getSkylightFactor(costType)
+
+        /////////////////
+        //Chimneys
+        /////////////////
+        function getChimneyFactor(costType) {
+            switch (costType) {
+                case costEstimations.LOW:
+                    return 300
+                case costEstimations.MID:
+                    return 550
+                case costEstimations.HIGH:
+                    return 1100
+            }
+        }
+
+        let getChimneyCost = costType => getChimneys() * getChimneyFactor(costType)
+
+        /////////////////
+        //Roofing material
+        /////////////////
+        function getRoofingMaterialCostFactor(calcType) {
+            switch (calcType) {
+                case costEstimations.LOW:
+                    {
+                        switch (getMaterials()) {
+                            case "roofing_material_standard":
+                                return 0;
+                            case "roofing_material_premium":
+                                return 60;
+                            case "roofing_material_epdm":
+                                return 100;
+                        }
+                    }
+                    F
+                case costEstimations.MID:
+                    {
+                        switch (getMaterials()) {
+                            case "roofing_material_standard":
+                                return 0;
+                            case "roofing_material_premium":
+                                return 100;
+                            case "roofing_material_epdm":
+                                return 250;
+                        }
+                    }
+                case costEstimations.HIGH:
+                    {
+                        switch (getMaterials()) {
+                            case "roofing_material_standard":
+                                return 0;
+                            case "roofing_material_premium":
+                                return 160;
+                            case "roofing_material_epdm":
+                                return 300;
+                        }
+                    }
+            }
+        }
+
+        let getRoofingMaterialCost = calcType => getSquare() * getRoofingMaterialCostFactor(calcType)
+
+        /////////////////
+        //Update UI
+        /////////////////
+        function calculate() {
+            logValues()
+
+            calculateLow()
+            calculateMid()
+            calculateHigh()
+        }
+
+        function getTotalCost(costType) {
+            var total = 0
+            total += getSquareCost(costType)
+            total += getRoofSlopeCost(costType)
+            total += getTearOffCost(costType)
+            total += getStoryCost(costType)
+            total += getSkylightCost(costType)
+            total += getChimneyCost(costType)
+            total += getRoofingMaterialCost(costType)
+            return total
+        }
+
+        function calculateLow() {
+            let costType = costEstimations.LOW
+            document.getElementById("square_low").innerHTML = getSquare();
+            document.getElementById("square_cost_low").innerHTML = getSquareCost(costType)
+            document.getElementById("roof_slope_low").innerHTML = getRoofSlopeCost(costType)
+            document.getElementById("tear_off_low").innerHTML = getTearOffCost(costType)
+            document.getElementById("stories_low").innerHTML = getStoryCost(costType)
+            document.getElementById("skighlight_low").innerHTML = getSkylightCost(costType)
+            document.getElementById("chimney_low").innerHTML = getChimneyCost(costType)
+            document.getElementById("roofing_material_low").innerHTML = getRoofingMaterialCost(costType)
+            document.getElementById("cost_low").innerHTML = getTotalCost(costType)
+        }
+
+        function calculateMid() {
+            let costType = costEstimations.MID
+            document.getElementById("square_med").innerHTML = getSquare();
+            document.getElementById("square_cost_mid").innerHTML = getSquareCost(costType)
+            document.getElementById("roof_slope_mid").innerHTML = getRoofSlopeCost(costType)
+            document.getElementById("tear_off_mid").innerHTML = getTearOffCost(costType)
+            document.getElementById("stories_mid").innerHTML = getStoryCost(costType)
+            document.getElementById("skighlight_mid").innerHTML = getSkylightCost(costType)
+            document.getElementById("chimney_mid").innerHTML = getChimneyCost(costType)
+            document.getElementById("roofing_material_mid").innerHTML = getRoofingMaterialCost(costType)
+            document.getElementById("cost_mid").innerHTML = getTotalCost(costType)
+        }
+
+        function calculateHigh() {
+            let costType = costEstimations.HIGH
+            document.getElementById("square_high").innerHTML = getSquare();
+            document.getElementById("square_cost_high").innerHTML = getSquareCost(costType)
+            document.getElementById("roof_slope_high").innerHTML = getRoofSlopeCost(costType)
+            document.getElementById("tear_off_high").innerHTML = getTearOffCost(costType)
+            document.getElementById("stories_high").innerHTML = getStoryCost(costType)
+            document.getElementById("skighlight_high").innerHTML = getSkylightCost(costType)
+            document.getElementById("chimney_high").innerHTML = getChimneyCost(costType)
+            document.getElementById("roofing_material_high").innerHTML = getRoofingMaterialCost(costType)
+            document.getElementById("cost_high").innerHTML = getTotalCost(costType)
+        }
+
+        function logValues() {
+            console.log("Roof length: " + getRoofLength())
+            console.log("Roof width: " + getRoofWidth())
+            console.log("Roof slope: " + getRoofSlope())
+            console.log("Tear off: " + getTearOff())
+            console.log("Stories: " + getStories())
+            console.log("Roofing materials: " + getMaterials())
+            console.log("Stories: " + getStories())
+            console.log("Skylights: " + getSkylight())
+            console.log("Chimneys : " + getChimneys())
+            console.log("")
+        }
+    </script>
+</body>
+
+</html>
