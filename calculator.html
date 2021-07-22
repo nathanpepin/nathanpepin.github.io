@@ -83,63 +83,6 @@
             </tr>
         </table>
         <p1 style="text-align: center"><em>Questions?<br>Special needs?<br><strong>Call us at (603) 838-7663</strong></em></p1>
-        <br>
-        <table class="table table-striped">
-            <tr style="background: #C00624; color:white">
-                <th>Type</th>
-                <th>Low</th>
-                <th>Mid</th>
-                <th>High</th>
-            </tr>
-            <tr>
-                <td>Square</td>
-                <td id="square_low"></td>
-                <td id="square_mid"></td>
-                <td id="square_high"></td>
-            </tr>
-            <tr>
-                <td>Square cost</td>
-                <td id="square_cost_low"></td>
-                <td id="square_cost_mid"></td>
-                <td id="square_cost_high"></td>
-            </tr>
-            <tr>
-                <td>Roof slope</td>
-                <td id="roof_slope_low"></td>
-                <td id="roof_slope_mid"></td>
-                <td id="roof_slope_high"></td>
-            </tr>
-            <tr>
-                <td>Tear-off/Disposal</td>
-                <td id="tear_off_low"></td>
-                <td id="tear_off_mid"></td>
-                <td id="tear_off_high"></td>
-            </tr>
-            <tr>
-                <td>Number of Stories</td>
-                <td id="stories_low"></td>
-                <td id="stories_mid"></td>
-                <td id="stories_high"></td>
-            </tr>
-            <tr>
-                <td>Skylights</td>
-                <td id="skighlight_low"></td>
-                <td id="skighlight_mid"></td>
-                <td id="skighlight_high"></td>
-            </tr>
-            <tr>
-                <td>Chimneys</td>
-                <td id="chimney_low"></td>
-                <td id="chimney_mid"></td>
-                <td id="chimney_high"></td>
-            </tr>
-            <tr>
-                <td>Roofing Materials</td>
-                <td id="roofing_material_low"></td>
-                <td id="roofing_material_mid"></td>
-                <td id="roofing_material_high"></td>
-            </tr>
-        </table>
     </div>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css " rel="stylesheet " integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC " crossorigin="anonymous ">
 
@@ -436,43 +379,16 @@
 
         function calculateLow() {
             let costType = costEstimations.LOW
-            document.getElementById("square_low").innerHTML = getSquare();
-            document.getElementById("square_cost_low").innerHTML = getSquareCost(costType)
-            document.getElementById("roof_slope_low").innerHTML = getRoofSlopeCost(costType)
-            document.getElementById("tear_off_low").innerHTML = getTearOffCost(costType)
-            document.getElementById("stories_low").innerHTML = getStoryCost(costType)
-            document.getElementById("skighlight_low").innerHTML = getSkylightCost(costType)
-            document.getElementById("chimney_low").innerHTML = getChimneyCost(costType)
-            document.getElementById("roofing_material_low").innerHTML = getRoofingMaterialCost(costType)
-
             setCostLow(getTotalCost(costType))
         }
 
         function calculateMid() {
             let costType = costEstimations.MID
-            document.getElementById("square_mid").innerHTML = getSquare();
-            document.getElementById("square_cost_mid").innerHTML = getSquareCost(costType)
-            document.getElementById("roof_slope_mid").innerHTML = getRoofSlopeCost(costType)
-            document.getElementById("tear_off_mid").innerHTML = getTearOffCost(costType)
-            document.getElementById("stories_mid").innerHTML = getStoryCost(costType)
-            document.getElementById("skighlight_mid").innerHTML = getSkylightCost(costType)
-            document.getElementById("chimney_mid").innerHTML = getChimneyCost(costType)
-            document.getElementById("roofing_material_mid").innerHTML = getRoofingMaterialCost(costType)
-
             setCostMid(getTotalCost(costType))
         }
 
         function calculateHigh() {
             let costType = costEstimations.HIGH
-            document.getElementById("square_high").innerHTML = getSquare();
-            document.getElementById("square_cost_high").innerHTML = getSquareCost(costType)
-            document.getElementById("roof_slope_high").innerHTML = getRoofSlopeCost(costType)
-            document.getElementById("tear_off_high").innerHTML = getTearOffCost(costType)
-            document.getElementById("stories_high").innerHTML = getStoryCost(costType)
-            document.getElementById("skighlight_high").innerHTML = getSkylightCost(costType)
-            document.getElementById("chimney_high").innerHTML = getChimneyCost(costType)
-            document.getElementById("roofing_material_high").innerHTML = getRoofingMaterialCost(costType)
-
             setCostHigh(getTotalCost(costType))
         }
 
